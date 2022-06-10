@@ -16,7 +16,7 @@ router.post("/login", function (req, res) {
     }
     else { 
       //console.log(err.message);
-      res.redirect('/' );
+      res.render('index' , { message : 'credentials not correct' });
       client.end;
     }
   })
@@ -40,7 +40,7 @@ router.post('/register', (req, res) => {
     }
     else { 
       //console.log("nope");
-      res.redirect('/');
+      res.render('index', { message : 'user already exists' });
       client.end;
     }
   })
@@ -48,12 +48,12 @@ router.post('/register', (req, res) => {
 })
 
 router.get('/logout', (req, res) => {
-  res.redirect('/');
+  res.redirect('index', { message : '' });
 })
 
 router.get('/', function (req, res, next) {
-  console.log("home page called");
-  res.render('index');
+  console.log("home page called" );
+  res.render('index', { message : '' });
 });
 
 module.exports = router;
